@@ -56,27 +56,32 @@ export const Home = () => {
           <p className="list-header-txt">Users List</p>
         </div>
         <div className="list-container">
-          {data.map((par, index) => {
-            return (
-              <div
-                key={index}
-                className="single-container"
-                onClick={() => setUserInfo(par)}
-              >
-                <img
-                  src={par.avatar || "https://i.ibb.co/WDS7G7c/download-1.png"}
-                  onError={(e) =>
-                    (e.currentTarget.src =
-                      "https://i.ibb.co/WDS7G7c/download-1.png")
-                  }
-                  alt="user-avatar"
-                />
-                <p className="user-full-name">
-                  {par.profile.firstName} {par.profile.lastName}
-                </p>
-              </div>
-            );
-          })}
+          {data
+            .slice()
+            .reverse()
+            .map((par, index) => {
+              return (
+                <div
+                  key={index}
+                  className="single-container"
+                  onClick={() => setUserInfo(par)}
+                >
+                  <img
+                    src={
+                      par.avatar || "https://i.ibb.co/WDS7G7c/download-1.png"
+                    }
+                    onError={(e) =>
+                      (e.currentTarget.src =
+                        "https://i.ibb.co/WDS7G7c/download-1.png")
+                    }
+                    alt="user-avatar"
+                  />
+                  <p className="user-full-name">
+                    {par.profile.firstName} {par.profile.lastName}
+                  </p>
+                </div>
+              );
+            })}
         </div>
       </div>
 
